@@ -41,5 +41,9 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>MGLMapboxAccessToken</key>
+	<string>pk.eyJ1IjoidHVsbGViIiwiYSI6ImNqMjM0aXVraDAwMGMzMm1uZmpoMmVkYmIifQ.dbf__ZSORHzhA7fH6z2LOw</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Indique votre localisation à l&apos;application exclusivement.</string>
 </dict>
 </plist>
