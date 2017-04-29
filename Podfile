@@ -6,6 +6,7 @@ target 'MaSuperCarte' do
   use_frameworks!
 
   pod 'Mapbox-iOS-SDK', '~> 3.5'
+  pod 'MapboxGeocoder.swift', '~> 0.6'
 
 
   # Pods for MaSuperCarte
