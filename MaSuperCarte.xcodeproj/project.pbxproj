@@ -1,0 +1,564 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		122F88A7C713D97FF08C4E61 /* Pods_MaSuperCarteTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B30BA469216472BD54A2C7F9 /* Pods_MaSuperCarteTests.framework */; };
+		7A4D61F51EB4A3C300DF4EE5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4D61F41EB4A3C300DF4EE5 /* AppDelegate.swift */; };
+		7A4D61F71EB4A3C300DF4EE5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4D61F61EB4A3C300DF4EE5 /* ViewController.swift */; };
+		7A4D61FA1EB4A3C300DF4EE5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A4D61F81EB4A3C300DF4EE5 /* Main.storyboard */; };
+		7A4D61FC1EB4A3C300DF4EE5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A4D61FB1EB4A3C300DF4EE5 /* Assets.xcassets */; };
+		7A4D61FF1EB4A3C300DF4EE5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A4D61FD1EB4A3C300DF4EE5 /* LaunchScreen.storyboard */; };
+		7A4D620A1EB4A3C300DF4EE5 /* MaSuperCarteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4D62091EB4A3C300DF4EE5 /* MaSuperCarteTests.swift */; };
+		C7B07DCF2651D4163986F2E1 /* Pods_MaSuperCarte.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41EB8B336FDED47FD099DC3F /* Pods_MaSuperCarte.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		7A4D62061EB4A3C300DF4EE5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7A4D61E91EB4A3C300DF4EE5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7A4D61F01EB4A3C300DF4EE5;
+			remoteInfo = MaSuperCarte;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		1FF25CA07FC74BF25E69C72C /* Pods-MaSuperCarteTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MaSuperCarteTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MaSuperCarteTests/Pods-MaSuperCarteTests.debug.xcconfig"; sourceTree = "<group>"; };
+		41EB8B336FDED47FD099DC3F /* Pods_MaSuperCarte.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MaSuperCarte.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7A4D61F11EB4A3C300DF4EE5 /* MaSuperCarte.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MaSuperCarte.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7A4D61F41EB4A3C300DF4EE5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		7A4D61F61EB4A3C300DF4EE5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		7A4D61F91EB4A3C300DF4EE5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		7A4D61FB1EB4A3C300DF4EE5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		7A4D61FE1EB4A3C300DF4EE5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		7A4D62001EB4A3C300DF4EE5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7A4D62051EB4A3C300DF4EE5 /* MaSuperCarteTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MaSuperCarteTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7A4D62091EB4A3C300DF4EE5 /* MaSuperCarteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaSuperCarteTests.swift; sourceTree = "<group>"; };
+		7A4D620B1EB4A3C300DF4EE5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8F24531A69407A3AC95E4940 /* Pods-MaSuperCarte.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MaSuperCarte.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MaSuperCarte/Pods-MaSuperCarte.debug.xcconfig"; sourceTree = "<group>"; };
+		AE5E38F53F94CB2157E3AA19 /* Pods-MaSuperCarteTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MaSuperCarteTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MaSuperCarteTests/Pods-MaSuperCarteTests.release.xcconfig"; sourceTree = "<group>"; };
+		B30BA469216472BD54A2C7F9 /* Pods_MaSuperCarteTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MaSuperCarteTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E3C80EB49D598BD380132E3B /* Pods-MaSuperCarte.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MaSuperCarte.release.xcconfig"; path = "Pods/Target Support Files/Pods-MaSuperCarte/Pods-MaSuperCarte.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		7A4D61EE1EB4A3C300DF4EE5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C7B07DCF2651D4163986F2E1 /* Pods_MaSuperCarte.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7A4D62021EB4A3C300DF4EE5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				122F88A7C713D97FF08C4E61 /* Pods_MaSuperCarteTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		7A4D61E81EB4A3C300DF4EE5 = {
+			isa = PBXGroup;
+			children = (
+				7A4D61F31EB4A3C300DF4EE5 /* MaSuperCarte */,
+				7A4D62081EB4A3C300DF4EE5 /* MaSuperCarteTests */,
+				7A4D61F21EB4A3C300DF4EE5 /* Products */,
+				AF683DB717760E54B3361D71 /* Pods */,
+				F4F4D594346C6D08F5877927 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		7A4D61F21EB4A3C300DF4EE5 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7A4D61F11EB4A3C300DF4EE5 /* MaSuperCarte.app */,
+				7A4D62051EB4A3C300DF4EE5 /* MaSuperCarteTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		7A4D61F31EB4A3C300DF4EE5 /* MaSuperCarte */ = {
+			isa = PBXGroup;
+			children = (
+				7A4D61F41EB4A3C300DF4EE5 /* AppDelegate.swift */,
+				7A4D61F61EB4A3C300DF4EE5 /* ViewController.swift */,
+				7A4D61F81EB4A3C300DF4EE5 /* Main.storyboard */,
+				7A4D61FB1EB4A3C300DF4EE5 /* Assets.xcassets */,
+				7A4D61FD1EB4A3C300DF4EE5 /* LaunchScreen.storyboard */,
+				7A4D62001EB4A3C300DF4EE5 /* Info.plist */,
+			);
+			path = MaSuperCarte;
+			sourceTree = "<group>";
+		};
+		7A4D62081EB4A3C300DF4EE5 /* MaSuperCarteTests */ = {
+			isa = PBXGroup;
+			children = (
+				7A4D62091EB4A3C300DF4EE5 /* MaSuperCarteTests.swift */,
+				7A4D620B1EB4A3C300DF4EE5 /* Info.plist */,
+			);
+			path = MaSuperCarteTests;
+			sourceTree = "<group>";
+		};
+		AF683DB717760E54B3361D71 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				8F24531A69407A3AC95E4940 /* Pods-MaSuperCarte.debug.xcconfig */,
+				E3C80EB49D598BD380132E3B /* Pods-MaSuperCarte.release.xcconfig */,
+				1FF25CA07FC74BF25E69C72C /* Pods-MaSuperCarteTests.debug.xcconfig */,
+				AE5E38F53F94CB2157E3AA19 /* Pods-MaSuperCarteTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		F4F4D594346C6D08F5877927 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				41EB8B336FDED47FD099DC3F /* Pods_MaSuperCarte.framework */,
+				B30BA469216472BD54A2C7F9 /* Pods_MaSuperCarteTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		7A4D61F01EB4A3C300DF4EE5 /* MaSuperCarte */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7A4D620E1EB4A3C300DF4EE5 /* Build configuration list for PBXNativeTarget "MaSuperCarte" */;
+			buildPhases = (
+				0012F87470A89BA1EAA7C4DE /* [CP] Check Pods Manifest.lock */,
+				7A4D61ED1EB4A3C300DF4EE5 /* Sources */,
+				7A4D61EE1EB4A3C300DF4EE5 /* Frameworks */,
+				7A4D61EF1EB4A3C300DF4EE5 /* Resources */,
+				DDD3F00B6EE0553800436CC3 /* [CP] Embed Pods Frameworks */,
+				8954D2D15F112CB88A4521D5 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MaSuperCarte;
+			productName = MaSuperCarte;
+			productReference = 7A4D61F11EB4A3C300DF4EE5 /* MaSuperCarte.app */;
+			productType = "com.apple.product-type.application";
+		};
+		7A4D62041EB4A3C300DF4EE5 /* MaSuperCarteTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7A4D62111EB4A3C300DF4EE5 /* Build configuration list for PBXNativeTarget "MaSuperCarteTests" */;
+			buildPhases = (
+				1A52D004FC37AA781B4B9B2F /* [CP] Check Pods Manifest.lock */,
+				7A4D62011EB4A3C300DF4EE5 /* Sources */,
+				7A4D62021EB4A3C300DF4EE5 /* Frameworks */,
+				7A4D62031EB4A3C300DF4EE5 /* Resources */,
+				D4BA5F7017B938858A1FDF95 /* [CP] Embed Pods Frameworks */,
+				8FAF21CB9D3F08A60AA4C29F /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7A4D62071EB4A3C300DF4EE5 /* PBXTargetDependency */,
+			);
+			name = MaSuperCarteTests;
+			productName = MaSuperCarteTests;
+			productReference = 7A4D62051EB4A3C300DF4EE5 /* MaSuperCarteTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		7A4D61E91EB4A3C300DF4EE5 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0830;
+				LastUpgradeCheck = 0830;
+				ORGANIZATIONNAME = "Guillaume Bellut";
+				TargetAttributes = {
+					7A4D61F01EB4A3C300DF4EE5 = {
+						CreatedOnToolsVersion = 8.3.2;
+						DevelopmentTeam = 9E43V6CC9L;
+						ProvisioningStyle = Automatic;
+					};
+					7A4D62041EB4A3C300DF4EE5 = {
+						CreatedOnToolsVersion = 8.3.2;
+						DevelopmentTeam = 9E43V6CC9L;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 7A4D61F01EB4A3C300DF4EE5;
+					};
+				};
+			};
+			buildConfigurationList = 7A4D61EC1EB4A3C300DF4EE5 /* Build configuration list for PBXProject "MaSuperCarte" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 7A4D61E81EB4A3C300DF4EE5;
+			productRefGroup = 7A4D61F21EB4A3C300DF4EE5 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				7A4D61F01EB4A3C300DF4EE5 /* MaSuperCarte */,
+				7A4D62041EB4A3C300DF4EE5 /* MaSuperCarteTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		7A4D61EF1EB4A3C300DF4EE5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7A4D61FF1EB4A3C300DF4EE5 /* LaunchScreen.storyboard in Resources */,
+				7A4D61FC1EB4A3C300DF4EE5 /* Assets.xcassets in Resources */,
+				7A4D61FA1EB4A3C300DF4EE5 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7A4D62031EB4A3C300DF4EE5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0012F87470A89BA1EAA7C4DE /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		1A52D004FC37AA781B4B9B2F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		8954D2D15F112CB88A4521D5 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MaSuperCarte/Pods-MaSuperCarte-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8FAF21CB9D3F08A60AA4C29F /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MaSuperCarteTests/Pods-MaSuperCarteTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D4BA5F7017B938858A1FDF95 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MaSuperCarteTests/Pods-MaSuperCarteTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DDD3F00B6EE0553800436CC3 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MaSuperCarte/Pods-MaSuperCarte-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		7A4D61ED1EB4A3C300DF4EE5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7A4D61F71EB4A3C300DF4EE5 /* ViewController.swift in Sources */,
+				7A4D61F51EB4A3C300DF4EE5 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7A4D62011EB4A3C300DF4EE5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7A4D620A1EB4A3C300DF4EE5 /* MaSuperCarteTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		7A4D62071EB4A3C300DF4EE5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7A4D61F01EB4A3C300DF4EE5 /* MaSuperCarte */;
+			targetProxy = 7A4D62061EB4A3C300DF4EE5 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		7A4D61F81EB4A3C300DF4EE5 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7A4D61F91EB4A3C300DF4EE5 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		7A4D61FD1EB4A3C300DF4EE5 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7A4D61FE1EB4A3C300DF4EE5 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		7A4D620C1EB4A3C300DF4EE5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		7A4D620D1EB4A3C300DF4EE5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		7A4D620F1EB4A3C300DF4EE5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8F24531A69407A3AC95E4940 /* Pods-MaSuperCarte.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 9E43V6CC9L;
+				INFOPLIST_FILE = MaSuperCarte/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.tulleb.MaSuperCarte;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		7A4D62101EB4A3C300DF4EE5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E3C80EB49D598BD380132E3B /* Pods-MaSuperCarte.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 9E43V6CC9L;
+				INFOPLIST_FILE = MaSuperCarte/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.tulleb.MaSuperCarte;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		7A4D62121EB4A3C300DF4EE5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1FF25CA07FC74BF25E69C72C /* Pods-MaSuperCarteTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = 9E43V6CC9L;
+				INFOPLIST_FILE = MaSuperCarteTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.tulleb.MaSuperCarteTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MaSuperCarte.app/MaSuperCarte";
+			};
+			name = Debug;
+		};
+		7A4D62131EB4A3C300DF4EE5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = AE5E38F53F94CB2157E3AA19 /* Pods-MaSuperCarteTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = 9E43V6CC9L;
+				INFOPLIST_FILE = MaSuperCarteTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.tulleb.MaSuperCarteTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MaSuperCarte.app/MaSuperCarte";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		7A4D61EC1EB4A3C300DF4EE5 /* Build configuration list for PBXProject "MaSuperCarte" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7A4D620C1EB4A3C300DF4EE5 /* Debug */,
+				7A4D620D1EB4A3C300DF4EE5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7A4D620E1EB4A3C300DF4EE5 /* Build configuration list for PBXNativeTarget "MaSuperCarte" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7A4D620F1EB4A3C300DF4EE5 /* Debug */,
+				7A4D62101EB4A3C300DF4EE5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		7A4D62111EB4A3C300DF4EE5 /* Build configuration list for PBXNativeTarget "MaSuperCarteTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7A4D62121EB4A3C300DF4EE5 /* Debug */,
+				7A4D62131EB4A3C300DF4EE5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 7A4D61E91EB4A3C300DF4EE5 /* Project object */;
+}
