@@ -8,11 +8,10 @@ French job interview project
 - Run MaSuperCarte.xcworkspace.
 
 ## Version
-1 (0) for 'Etape 1'
+2 (0) for 'Etape 2'
 
 ## Comments
-The app start by prompting the user to share his/her location.
-If the user denies, the app keeps working instead of stopping to be in compliance with the App Store Guidelines.
-If the user accepts, then the map is centered to his/her location, and a short animation starts to zoom in.
+The app now ask for an address to point it out on the center of the map.
+An auto-completion is proposed when typing, going up to 3 propositions in a table view below the search bar.
 
-I have added 2 unit tests. I know they might already have a lot more, or that I could have write them in a better way, but as I said to Jérôme this is the first time I am creating some through a XCTestCase in Swift.
+I tried to add some more unit tests. It took me some time to read on the internet how to deal with async functions in XCTestCase. I didn't want to spend more time on it as I am already late on the schedule.
