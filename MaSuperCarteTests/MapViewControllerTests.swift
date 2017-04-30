@@ -1,5 +1,5 @@
 //
-//  MaSuperCarteTests.swift
+//  MapViewController.swift
 //  MaSuperCarteTests
 //
 //  Created by Guillaume Bellut on 29/04/2017.
@@ -13,7 +13,7 @@ import MapboxGeocoder
 
 @testable import MaSuperCarte
 
-class MaSuperCarteTests: XCTestCase {
+class MapViewControllerTests: XCTestCase {
 	
 	static let MaxAllowedDistance: CLLocationDistance = 15.0
 	
@@ -23,8 +23,11 @@ class MaSuperCarteTests: XCTestCase {
 		super.setUp()
 		
 		let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-		if let viewController = storyboard.instantiateInitialViewController() as? MapViewController {
+		if let viewController = storyboard.instantiateViewController(withIdentifier: "MapViewController") as? MapViewController {
 			mapViewController = viewController
+		} else {
+			XCTFail("Couldn't  instance MapViewController")
+			return
 		}
 		
 		XCTAssertNotNil(mapViewController!.view)

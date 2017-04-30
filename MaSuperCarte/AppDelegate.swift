@@ -7,15 +7,47 @@
 //
 
 import UIKit
+import SlideMenuControllerSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
 	var window: UIWindow?
-
+	var selectedAddressFromMenu: AddressObject? = nil
+	
+	var lastAddresses: [AddressObject] {
+		get {
+			if let encodedReturnValue = UserDefaults.standard.object(forKey: MapViewController.EncodedAddressesKey) as? Data {
+				if let returnValue = NSKeyedUnarchiver.unarchiveObject(with: encodedReturnValue) as? [AddressObject] {
+					return returnValue
+				}
+			}
+			
+			return []
+		}
+		
+		set {
+			print("Encoding addresses...")
+			
+			let encodedObject = NSKeyedArchiver.archivedData(withRootObject: newValue)
+			UserDefaults.standard.set(encodedObject, forKey: MapViewController.EncodedAddressesKey)
+			UserDefaults.standard.synchronize()
+			
+			print("Addresses encoded")
+		}
+	}
 
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-		// Override point for customization after application launch.
+		let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+		let mapViewController = storyboard.instantiateViewController(withIdentifier: "MapViewController") as! MapViewController
+		let menuViewController = storyboard.instantiateViewController(withIdentifier: "MenuViewController") as! MenuViewController
+		
+		let slideMenuController = ContainerViewController(mainViewController: mapViewController, leftMenuViewController: menuViewController)
+		slideMenuController.delegate = mapViewController
+		
+		self.window?.rootViewController = slideMenuController
+		self.window?.makeKeyAndVisible()
+		
 		return true
 	}
 

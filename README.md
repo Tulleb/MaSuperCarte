@@ -8,12 +8,10 @@ French job interview project
 - Run MaSuperCarte.xcworkspace.
 
 ## Version
-3 (0) for 'Etape 3'
+4 (0) for 'Etape 4'
 
 ## Comments
-Dragging the map now automatically update the address search bar following a defined address format.
-If no address is found, then it is the default coordinate's placemark's qualified name which is set.
+Added a menu where recent addresses are displayed.
+User can tap one to be redirected to it automatically.
 
-I also removed the "current position when clearing search bar" feature for a better user experience.
-
-Finally, I changed the geocoding functions to send the results through completion handlers.
+I choosed to use SlideMenuControllerSwift repository for this step as it was an easy to use slide menu pod which was recently updated and stared more than 2,000 times.
