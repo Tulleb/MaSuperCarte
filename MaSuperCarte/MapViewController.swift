@@ -9,8 +9,9 @@
 import UIKit
 import Mapbox
 import MapboxGeocoder
+import SlideMenuControllerSwift
 
-class MapViewController: UIViewController, CLLocationManagerDelegate, MGLMapViewDelegate, UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource {
+class MapViewController: UIViewController, CLLocationManagerDelegate, MGLMapViewDelegate, UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource, SlideMenuControllerDelegate {
 	
 	// MARK: Static properties
 	
@@ -36,6 +37,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MGLMapView
 	@IBOutlet weak var addressTextField: UITextField!
 	@IBOutlet weak var autoCompletePlacemarkTableView: UITableView!
 	@IBOutlet weak var autoCompletePlacemarkTableViewHeightConstraint: NSLayoutConstraint!
+	
+	@IBOutlet weak var menuButton: UIButton!
 	
 	
 	// MARK: Basic properties
@@ -76,30 +79,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MGLMapView
 		}
 	}
 	
-	var lastAddresses: [AddressObject] {
-		get {
-			if let encodedReturnValue = UserDefaults.standard.object(forKey: MapViewController.EncodedAddressesKey) as? Data {
-				if let returnValue = NSKeyedUnarchiver.unarchiveObject(with: encodedReturnValue) as? [AddressObject] {
-					return returnValue
-				}
-			}
-			
-			return []
-		}
-		
-		set {
-			print("Encoding addresses...")
-			
-			let encodedObject = NSKeyedArchiver.archivedData(withRootObject: newValue)
-			UserDefaults.standard.set(encodedObject, forKey: MapViewController.EncodedAddressesKey)
-			UserDefaults.standard.synchronize()
-			
-			print("Addresses encoded")
-		}
-	}
 	
-	
-	// MARK: Overriding Functions
+	// MARK: Overriding functions
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -113,6 +94,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MGLMapView
 		autoCompletePlacemarkTableView.estimatedRowHeight = MapViewController.DefaultAutoCompleteAddressTableViewRowHeight
 		
 		addressTextField.addTarget(self, action: #selector(textFieldDidChange), for: UIControlEvents.editingChanged)
+		
+		menuButton.imageEdgeInsets = UIEdgeInsetsMake(5, 5, 5, 5)
 	}
 	
 	override func viewDidAppear(_ animated: Bool) {
@@ -128,7 +111,14 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MGLMapView
 	}
 	
 	
-	// MARK: Class Functions
+	// MARK: Storyboard functions
+	
+	@IBAction func menuAction(_ sender: Any) {
+		self.slideMenuController()?.openLeft()
+	}
+	
+	
+	// MARK: Class functions
 	
 	func centerMap(on location: CLLocation) {
 		// Using a minimum zoom level to avoid centering issue
@@ -235,7 +225,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MGLMapView
 	}
 	
 	func save(name: String, coordinate: CLLocationCoordinate2D) {
-		var lastAddressesBuffer = lastAddresses
+		let applicationDelegate = UIApplication.shared.delegate as! AppDelegate
+		var lastAddressesBuffer = applicationDelegate.lastAddresses
 		
 		for address in lastAddressesBuffer {
 			if name == address.name {
@@ -250,7 +241,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MGLMapView
 			lastAddressesBuffer.remove(at: MapViewController.MaxEncodedAddressesCount)
 		}
 		
-		lastAddresses = lastAddressesBuffer
+		applicationDelegate.lastAddresses = lastAddressesBuffer
 		
 		print("Cached address list now contains \(lastAddressesBuffer.count) addresses")
 	}
@@ -347,7 +338,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MGLMapView
 	}
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		guard let cell = tableView.dequeueReusableCell(withIdentifier: "AutoCompletePlacemarkCell") as? AutoCompletePlacemarkCell else {
+		guard let cell = tableView.dequeueReusableCell(withIdentifier: "AddressCell") as? AddressCell else {
 			return UITableViewCell()
 		}
 		
@@ -399,6 +390,24 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MGLMapView
 			
 			mapIsBeingDragged = false
 		}
+	}
+	
+	
+	// MARK: SlideMenuControllerDelegate
+	
+	func leftDidClose() {
+		print("Left menu just closed")
+		
+		let applicationDelegate = UIApplication.shared.delegate as! AppDelegate
+		
+		guard let selectedAddress = applicationDelegate.selectedAddressFromMenu else {
+			return
+		}
+		
+		print("Centering card on \(selectedAddress.name)...")
+		mapView.setCenter(selectedAddress.coordinate, animated: true)
+		
+		applicationDelegate.selectedAddressFromMenu = nil
 	}
 	
 }

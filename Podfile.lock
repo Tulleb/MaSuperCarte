@@ -1,15 +1,18 @@
 PODS:
   - Mapbox-iOS-SDK (3.5.2)
   - MapboxGeocoder.swift (0.6.1)
+  - SlideMenuControllerSwift (3.0.1)
 
 DEPENDENCIES:
   - Mapbox-iOS-SDK (~> 3.5)
   - MapboxGeocoder.swift (~> 0.6)
+  - SlideMenuControllerSwift (~> 3.0.1)
 
 SPEC CHECKSUMS:
   Mapbox-iOS-SDK: d0d58079e56e4eed4f0d8726afdbd49a76de8e5a
   MapboxGeocoder.swift: 5425c7e28fb8382ddc5a98f1d04cceb80b5c4532
+  SlideMenuControllerSwift: 9a163b16d54afab734add42858cba7ef7c307755
 
-PODFILE CHECKSUM: a88a2970e7c675171f4cb476d73962383d679d9c
+PODFILE CHECKSUM: ffae11e718d6fe1885406b68833503af02393ba9
 
 COCOAPODS: 1.2.1

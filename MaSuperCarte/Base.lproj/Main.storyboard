@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -26,7 +27,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Entrer une adresse..." textAlignment="natural" minimumFontSize="17" clearButtonMode="unlessEditing" translatesAutoresizingMaskIntoConstraints="NO" id="AhZ-o9-d90">
-                                        <rect key="frame" x="8" y="20" width="359" height="30"/>
+                                        <rect key="frame" x="46" y="20" width="283" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="go"/>
@@ -41,7 +42,7 @@
                                             <constraint firstAttribute="height" constant="200" id="HfY-TB-fEg"/>
                                         </constraints>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="AutoCompletePlacemarkCell" id="6gc-8o-yT8" customClass="AutoCompletePlacemarkCell" customModule="MaSuperCarte" customModuleProvider="target">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="AddressCell" id="6gc-8o-yT8" customClass="AddressCell" customModule="MaSuperCarte" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="28" width="359" height="44"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6gc-8o-yT8" id="jRi-cu-DQp">
@@ -74,15 +75,38 @@
                                             <outlet property="delegate" destination="BYZ-38-t0r" id="BGg-aJ-JUf"/>
                                         </connections>
                                     </tableView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jhn-M8-vkf">
+                                        <rect key="frame" x="8" y="20" width="30" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="jhn-M8-vkf" secondAttribute="height" multiplier="1:1" id="SqY-gV-3xo"/>
+                                            <constraint firstAttribute="width" constant="30" id="lU9-yy-neH"/>
+                                        </constraints>
+                                        <size key="titleShadowOffset" width="1" height="1"/>
+                                        <state key="normal" image="bars"/>
+                                        <connections>
+                                            <action selector="menuAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="AsI-qU-CM1"/>
+                                        </connections>
+                                    </button>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="26a-Km-w7b">
+                                        <rect key="frame" x="337" y="20" width="30" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="26a-Km-w7b" secondAttribute="height" multiplier="1:1" id="NzS-Fv-uny"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstItem="AhZ-o9-d90" firstAttribute="leading" secondItem="jhn-M8-vkf" secondAttribute="trailing" constant="8" id="3be-HQ-7nU"/>
                                     <constraint firstItem="ev6-MM-cax" firstAttribute="top" secondItem="AhZ-o9-d90" secondAttribute="bottom" constant="8" id="6Vh-ag-zm4"/>
-                                    <constraint firstItem="AhZ-o9-d90" firstAttribute="trailing" secondItem="tVx-7p-Xe6" secondAttribute="trailingMargin" id="8ig-PX-IeI"/>
+                                    <constraint firstAttribute="trailing" secondItem="26a-Km-w7b" secondAttribute="trailing" constant="8" id="8cj-Sg-DGX"/>
+                                    <constraint firstItem="26a-Km-w7b" firstAttribute="leading" secondItem="AhZ-o9-d90" secondAttribute="trailing" constant="8" id="GTB-d4-XWY"/>
+                                    <constraint firstItem="26a-Km-w7b" firstAttribute="centerY" secondItem="AhZ-o9-d90" secondAttribute="centerY" id="HNF-RE-qdC"/>
                                     <constraint firstAttribute="trailing" secondItem="ev6-MM-cax" secondAttribute="trailing" constant="8" id="HWY-wK-v62"/>
                                     <constraint firstItem="ev6-MM-cax" firstAttribute="leading" secondItem="tVx-7p-Xe6" secondAttribute="leading" constant="8" id="Hjf-yL-Xzw"/>
-                                    <constraint firstItem="AhZ-o9-d90" firstAttribute="leading" secondItem="tVx-7p-Xe6" secondAttribute="leadingMargin" id="qEJ-mm-48G"/>
+                                    <constraint firstItem="jhn-M8-vkf" firstAttribute="leading" secondItem="tVx-7p-Xe6" secondAttribute="leading" constant="8" id="ZVd-mA-W5Z"/>
+                                    <constraint firstItem="AhZ-o9-d90" firstAttribute="centerY" secondItem="jhn-M8-vkf" secondAttribute="centerY" id="eWj-Jp-4m1"/>
                                     <constraint firstItem="AhZ-o9-d90" firstAttribute="top" secondItem="tVx-7p-Xe6" secondAttribute="top" constant="20" id="s3U-Gf-XQ9"/>
+                                    <constraint firstItem="26a-Km-w7b" firstAttribute="width" secondItem="jhn-M8-vkf" secondAttribute="width" id="yvZ-rH-bN0"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="string" keyPath="styleURL__" value="mapbox://styles/mapbox/streets-v9"/>
@@ -105,11 +129,104 @@
                         <outlet property="autoCompletePlacemarkTableView" destination="ev6-MM-cax" id="b0o-4n-KOh"/>
                         <outlet property="autoCompletePlacemarkTableViewHeightConstraint" destination="HfY-TB-fEg" id="UPq-eY-9GH"/>
                         <outlet property="mapView" destination="tVx-7p-Xe6" id="Jk2-sX-M2e"/>
+                        <outlet property="menuButton" destination="jhn-M8-vkf" id="Dsw-1i-hpY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="136.80000000000001" y="138.98050974512745"/>
         </scene>
+        <!--Menu View Controller-->
+        <scene sceneID="k6J-St-A2Z">
+            <objects>
+                <viewController storyboardIdentifier="MenuViewController" id="lsk-sH-SO2" customClass="MenuViewController" customModule="MaSuperCarte" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="nTN-x6-Tuw"/>
+                        <viewControllerLayoutGuide type="bottom" id="dD9-LJ-xCy"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="4Hy-8M-HMq">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Adresses récentes" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Ws-3b-ph3">
+                                <rect key="frame" x="8" y="20" width="359" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="Obp-v7-hPd"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="j1F-Qe-h3R">
+                                <rect key="frame" x="8" y="78" width="359" height="589"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="AddressCell" id="ecg-ah-cZE" customClass="AddressCell" customModule="MaSuperCarte" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="359" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ecg-ah-cZE" id="taw-8U-lbR">
+                                            <rect key="frame" x="0.0" y="0.0" width="359" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DvL-8g-8o3">
+                                                    <rect key="frame" x="8" y="12" width="343" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="4I8-g4-XCH"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="DvL-8g-8o3" firstAttribute="trailing" secondItem="taw-8U-lbR" secondAttribute="trailingMargin" id="D0n-rH-zCC"/>
+                                                <constraint firstItem="DvL-8g-8o3" firstAttribute="centerY" secondItem="taw-8U-lbR" secondAttribute="centerY" id="M4q-de-D07"/>
+                                                <constraint firstItem="DvL-8g-8o3" firstAttribute="leading" secondItem="taw-8U-lbR" secondAttribute="leadingMargin" id="uK8-Yb-aPd"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="addressLabel" destination="DvL-8g-8o3" id="jfB-xV-2xE"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="lsk-sH-SO2" id="ncm-vH-1Rq"/>
+                                    <outlet property="delegate" destination="lsk-sH-SO2" id="0tn-E9-Mzh"/>
+                                </connections>
+                            </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Aucune adresse enregistrée" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vlJ-dM-Bbd">
+                                <rect key="frame" x="8" y="78" width="359" height="581"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="4Ws-3b-ph3" secondAttribute="trailing" constant="8" id="1vq-pG-WIy"/>
+                            <constraint firstItem="j1F-Qe-h3R" firstAttribute="top" secondItem="4Ws-3b-ph3" secondAttribute="bottom" constant="8" id="5Ut-Y2-mH4"/>
+                            <constraint firstItem="vlJ-dM-Bbd" firstAttribute="leading" secondItem="4Hy-8M-HMq" secondAttribute="leading" constant="8" id="F5D-PW-z91"/>
+                            <constraint firstItem="4Ws-3b-ph3" firstAttribute="top" secondItem="4Hy-8M-HMq" secondAttribute="top" constant="20" id="G87-u9-mAT"/>
+                            <constraint firstAttribute="trailing" secondItem="j1F-Qe-h3R" secondAttribute="trailing" constant="8" id="QFK-1l-0ds"/>
+                            <constraint firstItem="dD9-LJ-xCy" firstAttribute="top" secondItem="j1F-Qe-h3R" secondAttribute="bottom" id="Rf2-fz-owE"/>
+                            <constraint firstItem="vlJ-dM-Bbd" firstAttribute="top" secondItem="4Ws-3b-ph3" secondAttribute="bottom" constant="8" id="bgQ-OD-V5S"/>
+                            <constraint firstItem="4Ws-3b-ph3" firstAttribute="leading" secondItem="4Hy-8M-HMq" secondAttribute="leading" constant="8" id="cTQ-Lx-g5Y"/>
+                            <constraint firstAttribute="trailing" secondItem="vlJ-dM-Bbd" secondAttribute="trailing" constant="8" id="dEM-S3-2zH"/>
+                            <constraint firstItem="dD9-LJ-xCy" firstAttribute="top" secondItem="vlJ-dM-Bbd" secondAttribute="bottom" constant="8" id="g2q-hj-kGx"/>
+                            <constraint firstItem="j1F-Qe-h3R" firstAttribute="leading" secondItem="4Hy-8M-HMq" secondAttribute="leading" constant="8" id="luz-Zm-15U"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="addressTableView" destination="j1F-Qe-h3R" id="puO-0t-WNv"/>
+                        <outlet property="noAddressLabel" destination="vlJ-dM-Bbd" id="ovM-rM-wNQ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="X1f-CL-jpk" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="136.80000000000001" y="870.31484257871068"/>
+        </scene>
     </scenes>
+    <resources>
+        <image name="bars" width="30" height="30"/>
+    </resources>
 </document>
