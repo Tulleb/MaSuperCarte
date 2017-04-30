@@ -10,6 +10,6 @@ import UIKit
 
 class AutoCompletePlacemarkCell: UITableViewCell {
 	
-	@IBOutlet weak var qualifiedNameLabel: UILabel!
+	@IBOutlet weak var addressLabel: UILabel!
 	
 }

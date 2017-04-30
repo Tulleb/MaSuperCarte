@@ -56,40 +56,51 @@ class MaSuperCarteTests: XCTestCase {
 		XCTAssertTrue(mapViewController!.locationIsRelevant(newFarLocation))
 	}
 	
-	func testCheckAddress() {
-		// Can't figure out how to test this function as it is asynchronous
-//		let expectation = self.expectation(description: "Address is done being checked")
-//
-//		let queryWithResults = "20 rue des Prés"
-//		let queryWithoutResults = "dfjevnjljzrjdslqmoazrfzlj"
-//		
-//		mapViewController!.checkAddress(for: queryWithResults)
-//		waitForExpectations(timeout: 10) { (error) in
-//			guard error == nil else {
-//				XCTAssert(false)
-//				NSLog("Timeout Error")
-//				return
-//			}
-//			
-//			XCTAssertGreaterThan(self.mapViewController!.autoCompletePlacemarks.count, 0)
-//		}
-//		
-//		mapViewController!.checkAddress(for: queryWithResults)
-//		waitForExpectations(timeout: 10) { (error) in
-//			guard error == nil else {
-//				XCTAssert(false)
-//				NSLog("Timeout Error")
-//				return
-//			}
-//			
-//			XCTAssertEqual(self.mapViewController!.autoCompletePlacemarks.count, 0)
-//		}
+	func testPlacemarksFromText() {
+		let expectationTimeout: TimeInterval = 10.0
+		
+		let resultsPlacemarksQueryExpectation = self.expectation(description: "Address with placemarks is done being checked")
+
+		let queryWithResults = "20 rue des Prés Franconville"
+		let queryWithoutResults = "dfjevnjljzrjdslqmoazrfzlj"
+		
+		mapViewController!.placemarks(from: queryWithResults) { (placemarks: [GeocodedPlacemark]?) in
+			guard let placemarks = placemarks, placemarks.count > 0 else {
+				XCTFail("Couldn't find any placemark for this query")
+				return
+			}
+			
+			XCTAssertNotNil(placemarks)
+			XCTAssertGreaterThan(placemarks.count, 0)
+			
+			resultsPlacemarksQueryExpectation.fulfill()
+		}
+		
+		waitForExpectations(timeout: expectationTimeout) { error in
+			if let error = error {
+				XCTFail("Error with results query: \(error.localizedDescription)")
+			}
+		}
+		
+		let emplyPlacemarksQueryExpectation = self.expectation(description: "Address without placemarks is done being checked")
+		
+		mapViewController!.placemarks(from: queryWithoutResults) { (placemarks: [GeocodedPlacemark]?) in
+			XCTAssertNil(placemarks)
+			
+			emplyPlacemarksQueryExpectation.fulfill()
+		}
+		
+		waitForExpectations(timeout: expectationTimeout) { error in
+			if let error = error {
+				XCTFail("Error with empty query: \(error.localizedDescription)")
+			}
+		}
 	}
 	
 	func testConfirmAddress() {
 		let placemarkExpectation = expectation(description: "Placemark has been geocoded")
 		
-		let queryWithResults = "20 rue des Prés"
+		let queryWithResults = "20 rue des Prés Franconville"
 		let options = ForwardGeocodeOptions(query: queryWithResults)
 		
 		var placemark: GeocodedPlacemark?
@@ -117,8 +128,67 @@ class MaSuperCarteTests: XCTestCase {
 			else {
 				self.mapViewController!.confirmAddress(for: placemark!)
 				
-				XCTAssertEqual(self.mapViewController!.addressTextField.text, placemark!.qualifiedName)
+				XCTAssertEqual(self.mapViewController!.addressTextField.text, self.mapViewController!.address(from: placemark!))
 				XCTAssertEqual(self.mapViewController!.autoCompletePlacemarks.count, 0)
+			}
+		}
+	}
+	
+	func testAddressFromCoordinate() {
+		let resultsAddressExpectation = self.expectation(description: "Coordinate is done being checked")
+		
+		let addressCoordinate = CLLocation(latitude: 48.98925320, longitude: 2.22508220).coordinate
+		
+		mapViewController!.address(from: addressCoordinate) { (address: String?) in
+			guard let address = address else {
+				XCTFail("Couldn't find any address for this coordinate")
+				return
+			}
+			
+			XCTAssertNotNil(address)
+			
+			resultsAddressExpectation.fulfill()
+		}
+		
+		waitForExpectations(timeout: 10) { error in
+			if let error = error {
+				XCTFail("Error with results query: \(error.localizedDescription)")
+			}
+		}
+	}
+	
+	func testAddressFromPlacemark() {
+		let placemarkExpectation = expectation(description: "Placemark has been geocoded")
+		
+		let queryWithResults = "20 rue des Prés Franconville"
+		let options = ForwardGeocodeOptions(query: queryWithResults)
+		
+		var placemark: GeocodedPlacemark?
+		
+		_ = mapViewController!.geocoder.geocode(options) { (placemarks, attribution, error) in
+			XCTAssertNil(error)
+			XCTAssertNotNil(placemarks)
+			
+			if placemarks!.count == 0 {
+				XCTFail("Couldn't find any placemark for this query")
+				return
+			} else {
+				placemark = placemarks!.first
+			}
+			
+			XCTAssertNotNil(placemark)
+			
+			placemarkExpectation.fulfill()
+		}
+		
+		waitForExpectations(timeout: 10) { error in
+			if let error = error {
+				XCTFail("Error: \(error.localizedDescription)")
+			}
+			else {
+				let address = self.mapViewController!.address(from: placemark!)
+				
+				XCTAssertEqual(address, "20 Rue des Prés, 95130 Franconville")
 			}
 		}
 	}

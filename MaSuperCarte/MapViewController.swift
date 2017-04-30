@@ -42,6 +42,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MGLMapView
 	
 	let geocoder = Geocoder.shared
 	
+	var mapIsBeingDragged = false
 	
 	// MARK: Observing properties
 	
@@ -139,39 +140,68 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MGLMapView
 				return
 			}
 			
-			checkAddress(for: text)
+			placemarks(from: text) { (placemarks: [GeocodedPlacemark]?) in
+				if let placemarks = placemarks {
+					self.autoCompletePlacemarks = placemarks
+				}
+			}
 		}
 	}
 	
-	func checkAddress(for query: String) {
+	func placemarks(from query: String, completionHandler: @escaping (_ placemarks: [GeocodedPlacemark]?) -> Void) {
 		let options = ForwardGeocodeOptions(query: query)
 		
 		options.focalLocation = currentUserLocation
 		options.allowedScopes = [.address, .pointOfInterest]	// Added Point of Interest in the scope to improve user experience
 		
 		_ = geocoder.geocode(options) { (placemarks, attribution, error) in
-			guard let placemarks = placemarks else {
+			guard let placemarks = placemarks, placemarks.count > 0 else {
+				completionHandler(nil)
 				return
 			}
 			
 			print("Found \(placemarks.count) placemark(s)")
+			var returnedPlacemarks: [GeocodedPlacemark] = []
 			
 			// Giving a maximum number of auto-completed address for a better interface
 			if placemarks.count > MapViewController.MaxAutoCompletePlacemarks {
-				self.autoCompletePlacemarks = Array(placemarks.prefix(upTo: MapViewController.MaxAutoCompletePlacemarks))
+				returnedPlacemarks = Array(placemarks.prefix(upTo: MapViewController.MaxAutoCompletePlacemarks))
 			} else {
-				self.autoCompletePlacemarks = placemarks
+				returnedPlacemarks = placemarks
 			}
+			
+			completionHandler(returnedPlacemarks)
 		}
 	}
 	
 	func confirmAddress(for placemark: GeocodedPlacemark) {
 		addressTextField.resignFirstResponder()
-		addressTextField.text = placemark.qualifiedName
+		addressTextField.text = address(from: placemark)
 		autoCompletePlacemarks = []
 		
 		centerMap(on: placemark.location)
 		print("Centered map on confirmed address")
+	}
+	
+	func address(from coordinate: CLLocationCoordinate2D, completionHandler: @escaping (_ address: String?) -> Void) {
+		let options = ReverseGeocodeOptions(coordinate: coordinate)
+		
+		_ = geocoder.geocode(options) { (placemarks, attribution, error) in
+			guard let placemark = placemarks?.first else {
+				completionHandler(nil)
+				return
+			}
+			
+			completionHandler(self.address(from: placemark))
+		}
+	}
+	
+	func address(from placemark: GeocodedPlacemark) -> String {
+		guard let postalAddress = placemark.postalAddress, postalAddress.street != "", postalAddress.postalCode != "", postalAddress.city != "" else {
+			return placemark.qualifiedName
+		}
+		
+		return "\(postalAddress.street), \(postalAddress.postalCode) \(postalAddress.city)"
 	}
 
 	
@@ -242,7 +272,11 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MGLMapView
 			return true
 		}
 		
-		checkAddress(for: text)
+		placemarks(from: text) { (placemarks: [GeocodedPlacemark]?) in
+			if let placemarks = placemarks {
+				self.autoCompletePlacemarks = placemarks
+			}
+		}
 		
 		return true
 	}
@@ -250,11 +284,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MGLMapView
 	func textFieldShouldClear(_ textField: UITextField) -> Bool {
 		textField.text = ""
 		textField.resignFirstResponder()
-		
-		if let currentUserLocation = currentUserLocation {
-			centerMap(on: currentUserLocation)
-			print("Address bar cleared, map reset to user's current location")
-		}
 		
 		return false
 	}
@@ -272,7 +301,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MGLMapView
 		}
 		
 		let placemark = autoCompletePlacemarks[indexPath.row]
-		cell.qualifiedNameLabel.text = placemark.qualifiedName
+		cell.addressLabel.text = address(from: placemark)
 		
 		return cell
 	}
@@ -282,6 +311,40 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MGLMapView
 	
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		confirmAddress(for: autoCompletePlacemarks[indexPath.row])
+	}
+	
+	
+	// MARK: MGLMapViewDelegate
+	
+	func mapViewRegionIsChanging(_ mapView: MGLMapView) {
+		addressTextField.resignFirstResponder()
+		addressTextField.placeholder = "Déplacement en cours..."
+		addressTextField.text = ""
+		mapIsBeingDragged = true
+		autoCompletePlacemarks = []
+		
+		if currentPin == nil {
+			currentPin = MGLPointAnnotation()
+			mapView.addAnnotation(currentPin!)
+		}
+		
+		currentPin!.coordinate = mapView.centerCoordinate
+	}
+	
+	func mapView(_ mapView: MGLMapView, regionDidChangeAnimated animated: Bool) {
+		if mapIsBeingDragged {
+			address(from: mapView.centerCoordinate) { (address: String?) in
+				if let address = address {
+					self.addressTextField.text = address
+				} else {
+					self.addressTextField.text = ""
+				}
+				
+				self.addressTextField.placeholder = "Entrer une adresse..."
+			}
+			
+			mapIsBeingDragged = false
+		}
 	}
 	
 }
