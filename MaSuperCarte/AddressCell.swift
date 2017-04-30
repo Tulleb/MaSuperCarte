@@ -1,5 +1,5 @@
 //
-//  AutoCompletePlacemarkCell.swift
+//  AddressCell.swift
 //  MaSuperCarte
 //
 //  Created by Guillaume Bellut on 29/04/2017.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AutoCompletePlacemarkCell: UITableViewCell {
+class AddressCell: UITableViewCell {
 	
 	@IBOutlet weak var addressLabel: UILabel!
 	

@@ -7,6 +7,7 @@ target 'MaSuperCarte' do
 
   pod 'Mapbox-iOS-SDK', '~> 3.5'
   pod 'MapboxGeocoder.swift', '~> 0.6'
+  pod 'SlideMenuControllerSwift', '~> 3.0.1'
 
 
   # Pods for MaSuperCarte

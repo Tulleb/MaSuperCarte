@@ -9,8 +9,9 @@
 import UIKit
 import Mapbox
 import MapboxGeocoder
+import SlideMenuControllerSwift
 
-class MapViewController: UIViewController, CLLocationManagerDelegate, MGLMapViewDelegate, UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource {
+class MapViewController: UIViewController, CLLocationManagerDelegate, MGLMapViewDelegate, UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource, SlideMenuControllerDelegate {
 	
 	// MARK: Static properties
 	
@@ -26,6 +27,9 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MGLMapView
 	static let MaxAutoCompletePlacemarks: Int = 3
 	static let DefaultAutoCompleteAddressTableViewRowHeight: CGFloat = 44.0
 	
+	static let EncodedAddressesKey: String = "encodedAddressesKey"
+	static let MaxEncodedAddressesCount: Int = 15
+	
 	
 	// MARK: Storyboard properties
 	
@@ -33,6 +37,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MGLMapView
 	@IBOutlet weak var addressTextField: UITextField!
 	@IBOutlet weak var autoCompletePlacemarkTableView: UITableView!
 	@IBOutlet weak var autoCompletePlacemarkTableViewHeightConstraint: NSLayoutConstraint!
+	
+	@IBOutlet weak var menuButton: UIButton!
 	
 	
 	// MARK: Basic properties
@@ -74,7 +80,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MGLMapView
 	}
 	
 	
-	// MARK: Overriding Functions
+	// MARK: Overriding functions
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -88,6 +94,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MGLMapView
 		autoCompletePlacemarkTableView.estimatedRowHeight = MapViewController.DefaultAutoCompleteAddressTableViewRowHeight
 		
 		addressTextField.addTarget(self, action: #selector(textFieldDidChange), for: UIControlEvents.editingChanged)
+		
+		menuButton.imageEdgeInsets = UIEdgeInsetsMake(5, 5, 5, 5)
 	}
 	
 	override func viewDidAppear(_ animated: Bool) {
@@ -103,7 +111,14 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MGLMapView
 	}
 	
 	
-	// MARK: Class Functions
+	// MARK: Storyboard functions
+	
+	@IBAction func menuAction(_ sender: Any) {
+		self.slideMenuController()?.openLeft()
+	}
+	
+	
+	// MARK: Class functions
 	
 	func centerMap(on location: CLLocation) {
 		// Using a minimum zoom level to avoid centering issue
@@ -176,7 +191,12 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MGLMapView
 	
 	func confirmAddress(for placemark: GeocodedPlacemark) {
 		addressTextField.resignFirstResponder()
-		addressTextField.text = address(from: placemark)
+		
+		let name = address(from: placemark)
+		addressTextField.text = name
+		
+		save(name: name, coordinate: placemark.location.coordinate)
+		
 		autoCompletePlacemarks = []
 		
 		centerMap(on: placemark.location)
@@ -203,7 +223,29 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MGLMapView
 		
 		return "\(postalAddress.street), \(postalAddress.postalCode) \(postalAddress.city)"
 	}
-
+	
+	func save(name: String, coordinate: CLLocationCoordinate2D) {
+		let applicationDelegate = UIApplication.shared.delegate as! AppDelegate
+		var lastAddressesBuffer = applicationDelegate.lastAddresses
+		
+		for address in lastAddressesBuffer {
+			if name == address.name {
+				lastAddressesBuffer.remove(at: lastAddressesBuffer.index(of: address)!)
+				break
+			}
+		}
+		
+		lastAddressesBuffer.insert(AddressObject(name: name, coordinate: coordinate), at: 0)
+		
+		if lastAddressesBuffer.count > MapViewController.MaxEncodedAddressesCount {
+			lastAddressesBuffer.remove(at: MapViewController.MaxEncodedAddressesCount)
+		}
+		
+		applicationDelegate.lastAddresses = lastAddressesBuffer
+		
+		print("Cached address list now contains \(lastAddressesBuffer.count) addresses")
+	}
+	
 	
 	// MARK: CLLocationManagerDelegate
 	
@@ -296,7 +338,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MGLMapView
 	}
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		guard let cell = tableView.dequeueReusableCell(withIdentifier: "AutoCompletePlacemarkCell") as? AutoCompletePlacemarkCell else {
+		guard let cell = tableView.dequeueReusableCell(withIdentifier: "AddressCell") as? AddressCell else {
 			return UITableViewCell()
 		}
 		
@@ -333,9 +375,12 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MGLMapView
 	
 	func mapView(_ mapView: MGLMapView, regionDidChangeAnimated animated: Bool) {
 		if mapIsBeingDragged {
-			address(from: mapView.centerCoordinate) { (address: String?) in
+			let centerCoordinate = mapView.centerCoordinate
+			address(from: centerCoordinate) { (address: String?) in
 				if let address = address {
 					self.addressTextField.text = address
+					
+					self.save(name: address, coordinate: centerCoordinate)
 				} else {
 					self.addressTextField.text = ""
 				}
@@ -345,6 +390,24 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MGLMapView
 			
 			mapIsBeingDragged = false
 		}
+	}
+	
+	
+	// MARK: SlideMenuControllerDelegate
+	
+	func leftDidClose() {
+		print("Left menu just closed")
+		
+		let applicationDelegate = UIApplication.shared.delegate as! AppDelegate
+		
+		guard let selectedAddress = applicationDelegate.selectedAddressFromMenu else {
+			return
+		}
+		
+		print("Centering card on \(selectedAddress.name)...")
+		mapView.setCenter(selectedAddress.coordinate, animated: true)
+		
+		applicationDelegate.selectedAddressFromMenu = nil
 	}
 	
 }
