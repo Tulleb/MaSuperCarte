@@ -26,6 +26,9 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MGLMapView
 	static let MaxAutoCompletePlacemarks: Int = 3
 	static let DefaultAutoCompleteAddressTableViewRowHeight: CGFloat = 44.0
 	
+	static let EncodedAddressesKey: String = "encodedAddressesKey"
+	static let MaxEncodedAddressesCount: Int = 15
+	
 	
 	// MARK: Storyboard properties
 	
@@ -70,6 +73,28 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MGLMapView
 			} else {
 				autoCompletePlacemarkTableView.isHidden = true
 			}
+		}
+	}
+	
+	var lastAddresses: [AddressObject] {
+		get {
+			if let encodedReturnValue = UserDefaults.standard.object(forKey: MapViewController.EncodedAddressesKey) as? Data {
+				if let returnValue = NSKeyedUnarchiver.unarchiveObject(with: encodedReturnValue) as? [AddressObject] {
+					return returnValue
+				}
+			}
+			
+			return []
+		}
+		
+		set {
+			print("Encoding addresses...")
+			
+			let encodedObject = NSKeyedArchiver.archivedData(withRootObject: newValue)
+			UserDefaults.standard.set(encodedObject, forKey: MapViewController.EncodedAddressesKey)
+			UserDefaults.standard.synchronize()
+			
+			print("Addresses encoded")
 		}
 	}
 	
@@ -176,7 +201,12 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MGLMapView
 	
 	func confirmAddress(for placemark: GeocodedPlacemark) {
 		addressTextField.resignFirstResponder()
-		addressTextField.text = address(from: placemark)
+		
+		let name = address(from: placemark)
+		addressTextField.text = name
+		
+		save(name: name, coordinate: placemark.location.coordinate)
+		
 		autoCompletePlacemarks = []
 		
 		centerMap(on: placemark.location)
@@ -203,7 +233,28 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MGLMapView
 		
 		return "\(postalAddress.street), \(postalAddress.postalCode) \(postalAddress.city)"
 	}
-
+	
+	func save(name: String, coordinate: CLLocationCoordinate2D) {
+		var lastAddressesBuffer = lastAddresses
+		
+		for address in lastAddressesBuffer {
+			if name == address.name {
+				lastAddressesBuffer.remove(at: lastAddressesBuffer.index(of: address)!)
+				break
+			}
+		}
+		
+		lastAddressesBuffer.insert(AddressObject(name: name, coordinate: coordinate), at: 0)
+		
+		if lastAddressesBuffer.count > MapViewController.MaxEncodedAddressesCount {
+			lastAddressesBuffer.remove(at: MapViewController.MaxEncodedAddressesCount)
+		}
+		
+		lastAddresses = lastAddressesBuffer
+		
+		print("Cached address list now contains \(lastAddressesBuffer.count) addresses")
+	}
+	
 	
 	// MARK: CLLocationManagerDelegate
 	
@@ -333,9 +384,12 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MGLMapView
 	
 	func mapView(_ mapView: MGLMapView, regionDidChangeAnimated animated: Bool) {
 		if mapIsBeingDragged {
-			address(from: mapView.centerCoordinate) { (address: String?) in
+			let centerCoordinate = mapView.centerCoordinate
+			address(from: centerCoordinate) { (address: String?) in
 				if let address = address {
 					self.addressTextField.text = address
+					
+					self.save(name: address, coordinate: centerCoordinate)
 				} else {
 					self.addressTextField.text = ""
 				}
