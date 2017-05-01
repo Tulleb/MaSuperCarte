@@ -6,7 +6,7 @@
 //  Copyright © 2017 Guillaume Bellut. All rights reserved.
 //
 
-import UIKit
+import Foundation
 import CoreLocation
 
 class AddressObject: NSObject, NSCoding {
