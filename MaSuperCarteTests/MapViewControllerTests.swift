@@ -47,7 +47,7 @@ class MapViewControllerTests: XCTestCase {
 		
 		let distanceFromCenter = location.distance(from: mapLocation)
 		
-		XCTAssertLessThan(distanceFromCenter, MaSuperCarteTests.MaxAllowedDistance)
+		XCTAssertLessThan(distanceFromCenter, MapViewControllerTests.MaxAllowedDistance)
 	}
 	
 	func testLocationIsRelevant() {
