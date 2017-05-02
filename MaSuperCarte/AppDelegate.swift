@@ -13,29 +13,6 @@ import SlideMenuControllerSwift
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
 	var window: UIWindow?
-	var selectedAddressFromMenu: AddressObject? = nil
-	
-	var lastAddresses: [AddressObject] {
-		get {
-			if let encodedReturnValue = UserDefaults.standard.object(forKey: MapViewController.EncodedAddressesKey) as? Data {
-				if let returnValue = NSKeyedUnarchiver.unarchiveObject(with: encodedReturnValue) as? [AddressObject] {
-					return returnValue
-				}
-			}
-			
-			return []
-		}
-		
-		set {
-			print("Encoding addresses...")
-			
-			let encodedObject = NSKeyedArchiver.archivedData(withRootObject: newValue)
-			UserDefaults.standard.set(encodedObject, forKey: MapViewController.EncodedAddressesKey)
-			UserDefaults.standard.synchronize()
-			
-			print("Addresses encoded")
-		}
-	}
 
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 		let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)

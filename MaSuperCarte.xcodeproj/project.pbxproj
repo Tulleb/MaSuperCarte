@@ -15,11 +15,10 @@
 		7A4D61FF1EB4A3C300DF4EE5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A4D61FD1EB4A3C300DF4EE5 /* LaunchScreen.storyboard */; };
 		7A4D620A1EB4A3C300DF4EE5 /* MapViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4D62091EB4A3C300DF4EE5 /* MapViewControllerTests.swift */; };
 		7A9EC17B1EB4DA33007C9019 /* AddressCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9EC17A1EB4DA33007C9019 /* AddressCell.swift */; };
-		7A9EC17D1EB68AB2007C9019 /* AddressObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9EC17C1EB68AB2007C9019 /* AddressObject.swift */; };
+		7A9EC17D1EB68AB2007C9019 /* AddressModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9EC17C1EB68AB2007C9019 /* AddressModel.swift */; };
 		7A9EC17F1EB6959C007C9019 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9EC17E1EB6959C007C9019 /* MenuViewController.swift */; };
 		7A9EC1831EB697A5007C9019 /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9EC1821EB697A5007C9019 /* ContainerViewController.swift */; };
-		7A9EC1851EB73ECA007C9019 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9EC1841EB73ECA007C9019 /* MapViewModel.swift */; };
-		7A9EC1881EB74138007C9019 /* MapboxParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9EC1871EB74138007C9019 /* MapboxParser.swift */; };
+		7A9EC1851EB73ECA007C9019 /* MapboxViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9EC1841EB73ECA007C9019 /* MapboxViewModel.swift */; };
 		C7B07DCF2651D4163986F2E1 /* Pods_MaSuperCarte.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41EB8B336FDED47FD099DC3F /* Pods_MaSuperCarte.framework */; };
 /* End PBXBuildFile section */
 
@@ -47,11 +46,10 @@
 		7A4D62091EB4A3C300DF4EE5 /* MapViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewControllerTests.swift; sourceTree = "<group>"; };
 		7A4D620B1EB4A3C300DF4EE5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7A9EC17A1EB4DA33007C9019 /* AddressCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressCell.swift; sourceTree = "<group>"; };
-		7A9EC17C1EB68AB2007C9019 /* AddressObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressObject.swift; sourceTree = "<group>"; };
+		7A9EC17C1EB68AB2007C9019 /* AddressModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressModel.swift; sourceTree = "<group>"; };
 		7A9EC17E1EB6959C007C9019 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		7A9EC1821EB697A5007C9019 /* ContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
-		7A9EC1841EB73ECA007C9019 /* MapViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
-		7A9EC1871EB74138007C9019 /* MapboxParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapboxParser.swift; sourceTree = "<group>"; };
+		7A9EC1841EB73ECA007C9019 /* MapboxViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapboxViewModel.swift; sourceTree = "<group>"; };
 		8F24531A69407A3AC95E4940 /* Pods-MaSuperCarte.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MaSuperCarte.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MaSuperCarte/Pods-MaSuperCarte.debug.xcconfig"; sourceTree = "<group>"; };
 		AE5E38F53F94CB2157E3AA19 /* Pods-MaSuperCarteTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MaSuperCarteTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MaSuperCarteTests/Pods-MaSuperCarteTests.release.xcconfig"; sourceTree = "<group>"; };
 		B30BA469216472BD54A2C7F9 /* Pods_MaSuperCarteTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MaSuperCarteTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -103,7 +101,7 @@
 			children = (
 				7AD2973F1EB4AA3900593FD0 /* Model */,
 				7A9EC1861EB73EED007C9019 /* ViewModel */,
-				7AD297411EB4AA4200593FD0 /* Controller */,
+				7AD297411EB4AA4200593FD0 /* ViewController */,
 				7AD297401EB4AA3E00593FD0 /* View */,
 				7A4D61F41EB4A3C300DF4EE5 /* AppDelegate.swift */,
 				7A4D61FB1EB4A3C300DF4EE5 /* Assets.xcassets */,
@@ -124,8 +122,7 @@
 		7A9EC1861EB73EED007C9019 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				7A9EC1841EB73ECA007C9019 /* MapViewModel.swift */,
-				7A9EC1871EB74138007C9019 /* MapboxParser.swift */,
+				7A9EC1841EB73ECA007C9019 /* MapboxViewModel.swift */,
 			);
 			name = ViewModel;
 			sourceTree = "<group>";
@@ -133,7 +130,7 @@
 		7AD2973F1EB4AA3900593FD0 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				7A9EC17C1EB68AB2007C9019 /* AddressObject.swift */,
+				7A9EC17C1EB68AB2007C9019 /* AddressModel.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -148,14 +145,14 @@
 			name = View;
 			sourceTree = "<group>";
 		};
-		7AD297411EB4AA4200593FD0 /* Controller */ = {
+		7AD297411EB4AA4200593FD0 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
 				7A4D61F61EB4A3C300DF4EE5 /* MapViewController.swift */,
 				7A9EC17E1EB6959C007C9019 /* MenuViewController.swift */,
 				7A9EC1821EB697A5007C9019 /* ContainerViewController.swift */,
 			);
-			name = Controller;
+			name = ViewController;
 			sourceTree = "<group>";
 		};
 		AF683DB717760E54B3361D71 /* Pods */ = {
@@ -383,13 +380,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				7A4D61F71EB4A3C300DF4EE5 /* MapViewController.swift in Sources */,
-				7A9EC1881EB74138007C9019 /* MapboxParser.swift in Sources */,
 				7A9EC17F1EB6959C007C9019 /* MenuViewController.swift in Sources */,
 				7A9EC17B1EB4DA33007C9019 /* AddressCell.swift in Sources */,
 				7A4D61F51EB4A3C300DF4EE5 /* AppDelegate.swift in Sources */,
-				7A9EC1851EB73ECA007C9019 /* MapViewModel.swift in Sources */,
+				7A9EC1851EB73ECA007C9019 /* MapboxViewModel.swift in Sources */,
 				7A9EC1831EB697A5007C9019 /* ContainerViewController.swift in Sources */,
-				7A9EC17D1EB68AB2007C9019 /* AddressObject.swift in Sources */,
+				7A9EC17D1EB68AB2007C9019 /* AddressModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -558,7 +554,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1FF25CA07FC74BF25E69C72C /* Pods-MaSuperCarteTests.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = 9E43V6CC9L;
 				INFOPLIST_FILE = MaSuperCarteTests/Info.plist;
@@ -574,7 +569,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = AE5E38F53F94CB2157E3AA19 /* Pods-MaSuperCarteTests.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = 9E43V6CC9L;
 				INFOPLIST_FILE = MaSuperCarteTests/Info.plist;

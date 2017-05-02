@@ -1,18 +1,33 @@
 PODS:
   - Mapbox-iOS-SDK (3.5.2)
   - MapboxGeocoder.swift (0.6.1)
+  - RxBlocking (3.4.0):
+    - RxSwift (~> 3.4)
+  - RxCocoa (3.4.0):
+    - RxSwift (~> 3.4)
+  - RxSwift (3.4.0)
+  - RxTest (3.4.0):
+    - RxSwift (~> 3.4)
   - SlideMenuControllerSwift (3.0.1)
 
 DEPENDENCIES:
   - Mapbox-iOS-SDK (~> 3.5)
   - MapboxGeocoder.swift (~> 0.6)
+  - RxBlocking (~> 3.0)
+  - RxCocoa (~> 3.0)
+  - RxSwift (~> 3.0)
+  - RxTest (~> 3.0)
   - SlideMenuControllerSwift (~> 3.0.1)
 
 SPEC CHECKSUMS:
   Mapbox-iOS-SDK: d0d58079e56e4eed4f0d8726afdbd49a76de8e5a
   MapboxGeocoder.swift: 5425c7e28fb8382ddc5a98f1d04cceb80b5c4532
+  RxBlocking: 1797b8c1a3ad7b08965145e6e2294c2e101515aa
+  RxCocoa: d14ef6b6029e1ddc6e966508c09289090de68ff9
+  RxSwift: 3789a1af753002a14edecdb698a2424624296a9c
+  RxTest: beb6beb882cf1dcac5fc9fdbd4760a5254e7f3a6
   SlideMenuControllerSwift: 9a163b16d54afab734add42858cba7ef7c307755
 
-PODFILE CHECKSUM: ffae11e718d6fe1885406b68833503af02393ba9
+PODFILE CHECKSUM: 2ee5ed82f856f15af177e9b455582b299e096182
 
 COCOAPODS: 1.2.1
